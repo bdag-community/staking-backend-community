@@ -1,0 +1,51 @@
+{
+  "name": "staking-backend",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "node --import tsx --test tests/*.test.ts",
+    "contracts:sync": "node scripts/sync-contract-abis.mjs",
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "worker": "node dist/indexer.js",
+    "worker:crons": "node dist/crons.js",
+    "backfill:staking": "node dist/scripts/backfillStakingActivity.js",
+    "resync": "node dist/scripts/resync.js",
+    "resync:portfolio": "node dist/scripts/resyncPortfolio.js",
+    "repair:staking-nonce": "tsx src/scripts/repairStakingNonce.ts",
+    "repair:staking-nonce:dist": "node dist/scripts/repairStakingNonce.js",
+    "devnet:nonce-repair-test": "tsx src/scripts/devnetNonceRepairTest.ts",
+    "migrate": "node dist/scripts/migrate.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "ethers": "^6.16.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.1",
+    "node-cron": "^4.2.1",
+    "pg": "^8.18.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.3.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/node-fetch": "^2.6.13",
+    "@types/validator": "^13.15.10",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}

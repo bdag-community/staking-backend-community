@@ -1,0 +1,445 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "governor_",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "controller_",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidPolicy",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TooManyVersions",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "Unauthorized",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint32",
+        "name": "version",
+        "type": "uint32"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "effectiveEpoch",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint16",
+            "name": "miningOrdinaryTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "miningCriticalTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "stakingOrdinaryTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "stakingCriticalTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "ordinaryCoreChamberSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "ordinaryCoreWeightedSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "criticalCoreChamberSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "criticalCoreWeightedSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "specialistOrdinarySupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "specialistCriticalSupport",
+            "type": "uint16"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct GovernancePolicyModule.RuleSet",
+        "name": "rules",
+        "type": "tuple"
+      }
+    ],
+    "name": "PolicyScheduled",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "controller",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "version",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint8",
+        "name": "tier",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "miningFor",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "miningCast",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "stakingFor",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "stakingCast",
+        "type": "uint256"
+      }
+    ],
+    "name": "coreSucceeded",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
+    "name": "effectiveEpoch",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "version",
+        "type": "uint32"
+      }
+    ],
+    "name": "getRules",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint16",
+            "name": "miningOrdinaryTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "miningCriticalTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "stakingOrdinaryTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "stakingCriticalTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "ordinaryCoreChamberSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "ordinaryCoreWeightedSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "criticalCoreChamberSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "criticalCoreWeightedSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "specialistOrdinarySupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "specialistCriticalSupport",
+            "type": "uint16"
+          }
+        ],
+        "internalType": "struct GovernancePolicyModule.RuleSet",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "governor",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "version",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint8",
+        "name": "tier",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint8",
+        "name": "chamber",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "participation",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "name": "quorumReached",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint16",
+            "name": "miningOrdinaryTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "miningCriticalTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "stakingOrdinaryTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "stakingCriticalTurnout",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "ordinaryCoreChamberSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "ordinaryCoreWeightedSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "criticalCoreChamberSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "criticalCoreWeightedSupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "specialistOrdinarySupport",
+            "type": "uint16"
+          },
+          {
+            "internalType": "uint16",
+            "name": "specialistCriticalSupport",
+            "type": "uint16"
+          }
+        ],
+        "internalType": "struct GovernancePolicyModule.RuleSet",
+        "name": "next",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "startsAtEpoch",
+        "type": "uint256"
+      }
+    ],
+    "name": "schedulePolicy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint32",
+        "name": "version",
+        "type": "uint32"
+      },
+      {
+        "internalType": "uint8",
+        "name": "tier",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "forVotes",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "cast",
+        "type": "uint256"
+      }
+    ],
+    "name": "specialistSucceeded",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "epoch",
+        "type": "uint256"
+      }
+    ],
+    "name": "versionAt",
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "versionCount",
+    "outputs": [
+      {
+        "internalType": "uint32",
+        "name": "",
+        "type": "uint32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

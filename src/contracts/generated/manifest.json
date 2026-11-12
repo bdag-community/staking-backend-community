@@ -1,0 +1,46 @@
+{
+  "interfaceVersion": "1",
+  "release": "governance-testnet-release-v1",
+  "files": {
+    "StakingContractV2Devnet.json": {
+      "source": "StakingContractV2Testnet.abi.json",
+      "sha256": "f58fd86e84030f0b9cc0a98a00f2401b8585f27761e0f733cbb10d6720a13723"
+    },
+    "EpochCredential.json": {
+      "source": "EpochCredential.abi.json",
+      "sha256": "2d521fba3830d9a68623b48c8078d88e4b05a5bfdfd401c4537d4ed728f929ef"
+    },
+    "EpochGovernor.json": {
+      "source": "EpochGovernor.abi.json",
+      "sha256": "9dfea93b6d34c2ed2e3a6673d0c448667ca3748eba85e5bad6997d684605d3a5"
+    },
+    "GovernancePolicyModule.json": {
+      "source": "GovernancePolicyModule.abi.json",
+      "sha256": "f63c9a6a01c77731b95e139a0c1dd6598e0ba5f50162c071c4dfd3a280e39369"
+    },
+    "GovernanceHubV2.json": {
+      "source": "GovernanceHubV2.abi.json",
+      "sha256": "626d27bc138651210fc6455f9e8fec94981d5d1c3b2201743775955877e3ff6b"
+    },
+    "ChainTallyReader.json": {
+      "source": "ChainTallyReader.abi.json",
+      "sha256": "83355a139cf4e9d1e7ac8d530e79a6bfc502d93e571fb12759dee97641c1898f"
+    },
+    "ProjectEscrow.json": {
+      "source": "ProjectEscrow.abi.json",
+      "sha256": "57fc6808693c99ca71cab0fab92052b0782023f3e9940fc6341ef10abc0d4064"
+    },
+    "ProjectEscrowFactory.json": {
+      "source": "ProjectEscrowFactory.abi.json",
+      "sha256": "aae75b3a754d52f8a62263bc834334a65e72125b1d3c3f0813ae3d0b9e91f5a9"
+    },
+    "ApprovedDevRegistry.json": {
+      "source": "ApprovedDevRegistry.abi.json",
+      "sha256": "8824962ea313cae484352315c9f3d0b081722166e624aef5748e8e88ddd7dfd5"
+    },
+    "BidBondVault.json": {
+      "source": "BidBondVault.abi.json",
+      "sha256": "4e80b1dbd46eb210db4089b669f864854ba714cbea9850a8975ea077379a3361"
+    }
+  }
+}

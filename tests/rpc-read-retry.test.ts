@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import { retryDispatchRead } from '../src/services/rpc-read-provider';
+const unavailable=()=>Object.assign(new Error('could not coalesce error'),{error:{message:'EVM head unavailable at dispatch'}});
+test('retries only exact transient dispatch errors on listed reads',async()=>{let n=0;const delays:number[]=[];assert.equal(await retryDispatchRead('eth_getBlockByNumber',async()=>{if(++n<3)throw unavailable();return 'block';},async ms=>{delays.push(ms)}),'block');assert.equal(n,3);assert.deepEqual(delays,[100,200]);});
+test('never retries writes, unknown errors or indefinitely unavailable reads',async()=>{for(const method of ['eth_sendRawTransaction','unknown']){let n=0;await assert.rejects(retryDispatchRead(method,async()=>{n++;throw unavailable()},async()=>{}));assert.equal(n,1);}let n=0;await assert.rejects(retryDispatchRead('eth_call',async()=>{n++;throw new Error('execution reverted')},async()=>{}));assert.equal(n,1);n=0;await assert.rejects(retryDispatchRead('eth_call',async()=>{n++;throw unavailable()},async()=>{}));assert.equal(n,8);});

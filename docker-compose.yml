@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: staking_postgres
+    restart: always
+    ports:
+      - "5430:5432"
+    volumes:
+      - staking-postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: staking
+
+  app:
+    build: .
+    container_name: staking_backend
+    restart: always
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+    depends_on:
+      - postgres
+
+  worker:
+    build: .
+    container_name: staking_worker
+    restart: always
+    command: node dist/indexer.js
+    env_file:
+      - .env
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+    depends_on:
+      - postgres
+
+  pgadmin:
+    container_name: staking_pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8083:80"
+    depends_on:
+      - postgres
+
+volumes:
+  staking-postgres-data:

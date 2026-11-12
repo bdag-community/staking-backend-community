@@ -1,0 +1,8 @@
+{
+  "sourceRepository": "BlockdagEngineering/Contract-Staking",
+  "sourceCommit": "d1f80b209015a3bf28f54f59c09f716691cfd92a",
+  "contract": "contracts/governance/phase1/EpochGovernor.sol:EpochGovernor",
+  "compiler": "0.8.24",
+  "evmVersion": "london",
+  "abiSha256": "9dfea93b6d34c2ed2e3a6673d0c448667ca3748eba85e5bad6997d684605d3a5"
+}

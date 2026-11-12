@@ -1,0 +1,10 @@
+export const BLOCKCHAIN_CONSTANTS = {
+  ZERO_ADDRESS: "0x0000000000000000000000000000000000000000",
+  ACTIVE_POOL_WINDOW_HOURS: 24,
+};
+
+export enum PoolStatus {
+  ACTIVE = "active",
+  INACTIVE = "inactive",
+  ALL = "all",
+}

@@ -1,0 +1,13 @@
+name: prod deployment
+on:
+  push:
+    branches:
+      - prod
+  workflow_dispatch:
+
+jobs:
+  deployment:
+    uses: BlockdagNetworkLabs/github-workflow/.github/workflows/k8-deployment.yml@main
+    with:
+      ENVIRONMENT: "prod"
+    secrets: inherit

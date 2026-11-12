@@ -1,0 +1,13 @@
+name: testnet deployment
+on:
+  push:
+    branches:
+      - testnet
+  workflow_dispatch:
+
+jobs:
+  deployment:
+    uses: BlockdagNetworkLabs/github-workflow/.github/workflows/k8-deployment.yml@main
+    with:
+      ENVIRONMENT: 'testnet'
+    secrets: inherit
