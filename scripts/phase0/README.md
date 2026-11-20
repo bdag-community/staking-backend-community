@@ -2,7 +2,7 @@
 
 `audit-stranded.ts` discovers pairs from staking, unstaking and redelegation logs, adds each observed pool's operator self-position, and samples pinned storage. It has no signer or transaction methods and does not load environment secrets. This is an observation tool; it never produces an approved repair amount or Merkle root.
 
-Current run: `/Volumes/KIOXIA/BDAG/devnet-ops/evidence/20260907T164320Z-phase0/`. Read `AUDIT-STATUS.md` before rerunning. Public scans stopped on gateway errors and HTTP 429. There is no completed live report yet. Prefer an archival canonical node through a loopback SSH tunnel over another bulk public scan.
+The initial run stopped on gateway errors and HTTP 429. It did not produce a completed report. Use an archival canonical node for bulk reads and keep the output directory outside the repository.
 
 ## Run
 
